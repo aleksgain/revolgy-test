@@ -3,14 +3,21 @@ resource "aws_ecs_cluster" "revolgy-test-cluster" {
 }
 
 resource "aws_ecs_service" "revolgy-test" {
-  name = "revolgy-test-1"
+  name = "revolgy-test-app"
   cluster = aws_ecs_cluster.revolgy-test-cluster.id
   task_definition = aws_ecs_task_definition.revolgy-test.arn
   launch_type = "FARGATE"
-}
+  network_configuration {
+   assign_public_ip = false
 
-resource "aws_cloudwatch_log_group" "revolgy-test" {
-  name = "/ecs/revolgy-test"
+   security_groups = [
+    aws_security_group.egress-all.id,
+   ]
+
+   subnets = [
+    aws_subnet.private.id,
+   ]
+  }
 }
 
 resource "aws_ecs_task_definition" "revolgy-test" {
@@ -48,3 +55,8 @@ resource "aws_iam_role_policy_attachment" "ecs-task-execution-role" {
   role = aws_iam_role.revolgy-test-execution-role.name
   policy_arn = data.aws_iam_policy.ecs-task-execution-role.arn
 }
+
+resource "aws_cloudwatch_log_group" "revolgy-test" {
+  name = "/ecs/revolgy-test"
+}
+
