@@ -1,0 +1,19 @@
+[
+    {
+      "name": "revolgy-test",
+      "image": "aleksgain/revolgy-test:latest",
+      "portMappings": [
+        {
+          "containerPort": 80
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-region": "eu-west-1",
+          "awslogs-group": "/ecs/revolgy-test",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+]
