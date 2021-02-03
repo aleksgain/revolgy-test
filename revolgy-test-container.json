@@ -4,7 +4,7 @@
       "image": "aleksgain/revolgy-test:latest",
       "portMappings": [
         {
-          "containerPort": 80
+          "containerPort": 31337
         }
       ],
       "logConfiguration": {

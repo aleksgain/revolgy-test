@@ -7,16 +7,23 @@ resource "aws_ecs_service" "revolgy-test" {
   cluster = aws_ecs_cluster.revolgy-test-cluster.id
   task_definition = aws_ecs_task_definition.revolgy-test.arn
   launch_type = "FARGATE"
+  desired_count = 1
   network_configuration {
    assign_public_ip = false
 
    security_groups = [
     aws_security_group.egress-all.id,
+    aws_security_group.http.id,
    ]
 
    subnets = [
     aws_subnet.private.id,
    ]
+  }
+  load_balancer {
+    target_group_arn = aws_lb_target_group.revolgy-test.arn
+    container_name = "revolgy-test"
+    container_port = "31337"
   }
 }
 

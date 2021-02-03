@@ -2,6 +2,7 @@
 
 import json, socket, requests, urllib.request, time, sqlite3
 from flask import Flask
+from flask_api import status
 
 app = Flask(__name__)
 
@@ -42,6 +43,10 @@ def index():
     update(ip)
     text = ('Your IP is {}, saving it for tracking you!'.format(ip))
     return text
+
+@app.route('/health')
+def ok_status():
+    return 'OK', status.HTTP_200_OK
 
 if __name__ == "__main__":
    main()
