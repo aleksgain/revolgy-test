@@ -1,7 +1,5 @@
 # Revolgy Work Application Test
 
-[![Build Status](httpstravis-ci.orgjoemccanndillinger.svgbranch=master)](httpstravis-ci.orgjoemccanndillinger)
-
 ![It's honest work](httpsi.redd.itjqpuqv2uzag21.png)
 
 This is a very simple app that records a visitor's IP address and stores it in a database. The whole point of it's existence is to demonstrate an IaC solution 
