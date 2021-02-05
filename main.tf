@@ -7,7 +7,7 @@ resource "aws_ecs_service" "revolgy-test" {
   cluster = aws_ecs_cluster.revolgy-test-cluster.id
   task_definition = aws_ecs_task_definition.revolgy-test.arn
   launch_type = "FARGATE"
-  desired_count = 1
+  desired_count = var.desired_count
   network_configuration {
    assign_public_ip = false
 
