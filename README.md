@@ -1,18 +1,16 @@
 # Revolgy Work Application Test
 
-[![Build Status](httpstravis-ci.orgjoemccanndillinger.svgbranch=master)](httpstravis-ci.orgjoemccanndillinger)
-
-![It's honest work](httpsi.redd.itjqpuqv2uzag21.png)
+![It's honest work](https://i.redd.it/jqpuqv2uzag21.png)
 
 This is a very simple app that records a visitor's IP address and stores it in a database. The whole point of it's existence is to demonstrate an IaC solution 
 
-  - Repo hosted on [GitHub](httpsgithub.comaleksgain)
-  - Automated container builds via [DockerHub](httpshub.docker.comraleksgainrevolgy-test)
-  - Automated rollout to AWS via [Terraform Cloud](httpsapp.terraform.ioapp)
+  - Repo hosted on [GitHub](https://github.com/aleksgain)
+  - Automated container builds via [DockerHub](https://hub.docker.com/r/aleksgain/revolgy-test)
+  - Automated rollout to AWS via [Terraform Cloud](https://app.terraform.ioapp)
 
 # AWS Infrastructure
 
-  - [AWS Fargate](httpsaws.amazon.comfargate) for running serverless container workload
+  - [AWS Fargate](https://aws.amazon.com/fargate) for running serverless container workload
   - S3 bucket for Terrafrom state storage
   - Application Load balancer
   - CloudWatch for monitoring dashboard and logs
@@ -38,6 +36,7 @@ This is a very simple app that records a visitor's IP address and stores it in a
  - Switch database to Amazon RDS
  - Clean up TF files
  - Make the app show history
+ - Add a pretty FQDN name
 
 License
 ----
