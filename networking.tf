@@ -1,5 +1,8 @@
 resource "aws_vpc" "app-vpc" {
   cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "main"
+  }
 }
 
 resource "aws_subnet" "public" {

@@ -4,10 +4,10 @@ module "db" {
 
   identifier = "revolgy-test-db"
 
-  engine            = "mysql"
-  engine_version    = "5.7.19"
+  engine            = "mariadb"
+  engine_version    = "10.0.3"
   instance_class    = "db.t3.micro"
-  allocated_storage = 5
+  allocated_storage = 1
 
   name     = "ip"
   username = var.rds-username
@@ -16,7 +16,7 @@ module "db" {
 
   iam_database_authentication_enabled = true
 
-  #vpc_security_group_ids = [aws_vpc.app-vpc.id]
+  vpc_security_group_ids = [aws_vpc.app-vpc.id]
 
   maintenance_window = "Mon:00:00-Mon:03:00"
   backup_window      = "03:00-06:00"
