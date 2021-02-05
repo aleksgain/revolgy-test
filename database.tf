@@ -5,7 +5,7 @@ module "db" {
   identifier = "revolgy-test-db"
 
   engine            = "mariadb"
-  engine_version    = "10.3"
+  engine_version    = "10.4"
   instance_class    = "db.t3.micro"
   allocated_storage = 1
 
@@ -29,7 +29,11 @@ module "db" {
     aws_subnet.public.id,
     aws_subnet.private.id,
   ]
-  
+
+  family = "mariadb"
+
+  major_engine_version = "10.4"
+
   deletion_protection = false
 
   parameters = [
