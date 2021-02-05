@@ -30,8 +30,6 @@ module "db" {
     aws_subnet.private.id,
   ]
 
-  family = "mariadb"
-
   major_engine_version = "10.4"
 
   deletion_protection = false
