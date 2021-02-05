@@ -99,3 +99,16 @@ resource "aws_security_group" "egress-all" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_security_group" "db" {
+  name = "db"
+  description = "DB traffic"
+  vpc_id = aws_vpc.app-vpc.id
+
+  egress {
+    from_port = 3306
+    to_port = 3306
+    protocol = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
