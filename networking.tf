@@ -105,7 +105,7 @@ resource "aws_security_group" "db" {
   description = "DB traffic"
   vpc_id = aws_vpc.app-vpc.id
 
-  egress {
+  ingress {
     from_port = 3306
     to_port = 3306
     protocol = "TCP"
