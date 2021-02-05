@@ -13,3 +13,7 @@ output "private_subnet_id" {
 output "alb_url" {
   value = "http://${aws_alb.revolgy-test.dns_name}"
 }
+
+output "ip" {
+  value = aws_eip.ip.public_ip
+}
