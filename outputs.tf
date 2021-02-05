@@ -15,5 +15,5 @@ output "alb_url" {
 }
 
 output "ip" {
-  value = aws_eip.ip.public_ip
+  value = aws_eip.nat.public_ip
 }
