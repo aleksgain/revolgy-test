@@ -6,7 +6,7 @@ module "db" {
 
   engine            = "mysql"
   engine_version    = "5.7.19"
-  instance_class    = "db.t1.micro"
+  instance_class    = "db.t3.micro"
   allocated_storage = 5
 
   name     = "ip"
