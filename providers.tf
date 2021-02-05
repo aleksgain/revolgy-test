@@ -4,6 +4,7 @@ provider "aws" {
 }
 
 provider "mysql" {
+  version = "~> 1.6"
   endpoint = aws_db_instance.revolgy-test.endpoint
   username = var.db-username
   password = var.db-password
