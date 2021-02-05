@@ -7,7 +7,7 @@ module "db" {
   engine            = "mariadb"
   engine_version    = "10.4"
   instance_class    = "db.t3.micro"
-  allocated_storage = 1
+  allocated_storage = 5
 
   name     = "ip"
   username = var.rds-username
