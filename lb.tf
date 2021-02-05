@@ -19,6 +19,7 @@ resource "aws_alb" "revolgy-test" {
   load_balancer_type = "application"
 
   subnets = [
+    aws_subnet.public.id,
     aws_subnet.private.id,
   ]
 
