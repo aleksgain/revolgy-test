@@ -18,3 +18,23 @@ variable "desired_count" {
   description = "Ideal number of instances in the ECS cluster."
   default = 1
 }
+
+variable "rds-username" {
+    description = "Username for RDS root"
+    default = "rootuser"
+}
+
+variable "rds-password" {
+    description = "Password for RDS root"
+    default = "rootpasswd"
+}
+
+variable "db-username" {
+    description = "Username for RDS MySQL databse"
+    default = "dbuser"
+}
+
+variable "db-password" {
+    description = "Password for RDS MySQL databse"
+    default = "dbpasswd"
+}
