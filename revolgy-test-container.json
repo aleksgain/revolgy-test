@@ -10,19 +10,19 @@
       "environment": [
         {
           "name": "USER", 
-          "value": "${var.rds-username}"
+          "value": "${jsonencode(var.rds-username)}"
         },
         {
           "name": "PASSWORD",
-          "value": "${var.rds-password}"
+          "value": "${jsonencode(var.rds-password)}"
         },
         {
           "name": "DB-HOST",
-          "value": "${module.db.this_db_instance_address}"
+          "value": "${jsonencode(module.db.this_db_instance_address)}"
         },
         {
           "name": "DB-NAME",
-          "value": "${var.rds-dbname}"
+          "value": "${jsonencode(var.rds-dbname)}"
         }
       ],
       "logConfiguration": {
