@@ -16,6 +16,7 @@ def update(ip):
     dbpassword = os.environ['PASSWORD']
     dbhost = os.environ['DB-HOST']
     dbname = os.environ['DB-NAME']
+    print(dbuser, dbpassword, dbhost, dbusername)
     SQL = pymysql.connect(host=dbhost,
                              user=dbusername,
                              password=dbpassword,
