@@ -30,7 +30,41 @@ resource "aws_ecs_service" "revolgy-test" {
 
 resource "aws_ecs_task_definition" "revolgy-test" {
   family = "revolgy-test"
-  container_definitions = file("revolgy-test-container.json")
+  container_definitions = jsonencode({
+      "name": "revolgy-test",
+      "image": "aleksgain/revolgy-test:latest",
+      "portMappings": [
+        {
+          "containerPort": 31337
+        }
+      ],
+      "environment": [
+        {
+          "name": "USER", 
+          "value": "${var.rds-username}"
+        },
+        {
+          "name": "PASSWORD",
+          "value": "${var.rds-password}"
+        },
+        {
+          "name": "DB-HOST",
+          "value": "${module.db.this_db_instance_address}"
+        },
+        {
+          "name": "DB-NAME",
+          "value": "${var.rds-dbname}"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-region": "eu-west-1",
+          "awslogs-group": "/ecs/revolgy-test",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    })
   execution_role_arn = aws_iam_role.revolgy-test-execution-role.arn
   cpu = 256
   memory = 512
