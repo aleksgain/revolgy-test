@@ -30,7 +30,7 @@ resource "aws_ecs_service" "revolgy-test" {
 
 resource "aws_ecs_task_definition" "revolgy-test" {
   family = "revolgy-test"
-  container_definitions = << EOF
+  container_definitions = <<EOF
   [
     {
       "name": "revolgy-test",
