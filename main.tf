@@ -25,6 +25,7 @@ resource "aws_ecs_service" "revolgy-test" {
     container_name = "revolgy-test"
     container_port = "31337"
   }
+  depends_on = [module.db.this_db_instance_name]
 }
 
 resource "aws_ecs_task_definition" "revolgy-test" {

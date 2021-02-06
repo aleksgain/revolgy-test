@@ -9,7 +9,7 @@ module "db" {
   instance_class    = "db.t3.micro"
   allocated_storage = 5
 
-  name     = "ip"
+  name     = var.rds-dbname
   username = var.rds-username
   password = var.rds-password
   port     = "3306"
@@ -35,6 +35,7 @@ module "db" {
   major_engine_version = "5.7"
 
   deletion_protection = false
+  publicly_accessible	= false
 
   parameters = [
     {

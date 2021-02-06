@@ -1,4 +1,5 @@
-requests
 Flask
 Flask-Session
 Flask-API
+PyMySQL
+requests

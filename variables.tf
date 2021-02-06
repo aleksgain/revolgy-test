@@ -19,6 +19,11 @@ variable "desired_count" {
   default = 1
 }
 
+variable "rds-dbname" {
+    description = "Default database name"
+    default = "ip"
+}
+
 variable "rds-username" {
     description = "Username for RDS root"
     default = "rootuser"

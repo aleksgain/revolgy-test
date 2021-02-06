@@ -17,3 +17,7 @@ output "alb_url" {
 output "ip" {
   value = aws_eip.nat.public_ip
 }
+
+output "database_endpoint" {
+  value = module.db.this_db_instance_address
+}

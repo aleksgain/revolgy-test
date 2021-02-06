@@ -1,42 +1,51 @@
 #!/usr/bin/env python3
 
-import json, socket, requests, urllib.request, time, sqlite3
+import json, socket, requests, urllib.request, time, os, pymysql.cursors
 from flask import Flask
 from flask_api import status
+from flask import cli
 
 app = Flask(__name__)
+cli.show_server_banner = lambda *_: None
 
 def main():
      app.run(host='0.0.0.0',port=31337)
-#    while True:
-#        update()
-#        time.sleep(60)
 
 def update(ip):
-    SQL = sqlite3.connect('./ip.db')
-    database = SQL.cursor()
-    database.execute("CREATE TABLE IF NOT EXISTS ip (timestamp integer PRIMARY KEY, city text, region text, country_name text, cont_name text, \
-                        zip integer, lat integer, lon integer, language text, flag text, emoji text, phone_code integer)")
-
-    ip_url = 'http://api.ipstack.com/'+ip+'?access_key=9c4f70e64a64af13e587002fda3d020e&format=1'
-    result = json.loads((requests.get(ip_url)).text)
-    timestamp = int(time.time())
-    city = result['city']
-    region = result['region_name']
-    country_name = result['country_name']
-    cont_name = result['continent_name']
-    zip = result['zip']
-    lat = result['latitude']
-    lon = result['longitude']
-    language = result['location']['languages'][0]['name']
-    flag = result['location']['country_flag']
-    emoji = result['location']['country_flag_emoji']
-    phone_code = result['location']['calling_code']
-    database.execute("INSERT INTO ip (timestamp, city, region, country_name, cont_name, zip, lat, lon, language, flag, emoji, phone_code)" \
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (timestamp, city, region, country_name, cont_name, zip, lat, lon, language, flag, emoji, phone_code))
-    SQL.commit()
-    SQL.close()
-
+    dbusername = os.environ['USER']
+    dbpassword = os.environ['PASSWORD']
+    dbhost = os.environ['DB-HOST']
+    dbname = os.environ['DB-NAME']
+    SQL = pymysql.connect(host=dbhost,
+                             user=dbusername,
+                             password=dbpassword,
+                             database=dbname,
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
+    with SQL:
+        with SQL.cursor() as cursor:
+            initialize = "CREATE TABLE IF NOT EXISTS ip (timestamp integer PRIMARY KEY, city text, region text, country_name text, cont_name text, \
+                        zip integer, lat integer, lon integer, language text, flag text, phone_code integer)"
+            cursor.execute(initialize)
+            ip_url = 'http://api.ipstack.com/'+ip+'?access_key=9c4f70e64a64af13e587002fda3d020e&format=1'
+            response = json.loads((requests.get(ip_url)).text)
+            timestamp = int(time.time())
+            city = response['city']
+            region = response['region_name']
+            country_name = response['country_name']
+            cont_name = response['continent_name']
+            zip = response['zip']
+            lat = response['latitude']
+            lon = response['longitude']
+            language = response['location']['languages'][0]['name']
+            flag = response['location']['country_flag']
+            emoji = response['location']['country_flag_emoji']
+            phone_code = response['location']['calling_code']
+            result = "INSERT INTO ip (timestamp, city, region, country_name, cont_name, zip, lat, lon, language, flag, phone_code)" \
+                    " VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            cursor.execute(result, (timestamp, city, region, country_name, cont_name, zip, lat, lon, language, flag, phone_code))
+        SQL.commit()
+        
 @app.route('/')
 def index():
     ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
