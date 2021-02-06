@@ -37,6 +37,7 @@ resource "aws_ecs_task_definition" "revolgy-test" {
   requires_compatibilities = ["FARGATE"]
 
   network_mode = "awsvpc"
+  depends_on = [module.db.this_db_instance_name]
 }
 
 resource "aws_iam_role" "revolgy-test-execution-role" {
