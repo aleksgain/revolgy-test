@@ -50,7 +50,7 @@ def update(ip):
         
 @app.route('/')
 def index():
-    ip = request.environ['REMOTE_ADDR']
+    ip = request.remote_addr
     update(ip)
     text = ('Your IP is {}, saving it for tracking you!'.format(ip))
     return text
