@@ -26,6 +26,7 @@ module "db" {
   create_monitoring_role = true
 
   subnet_ids = [
+    aws_subnet.public.id,
     aws_subnet.private.id,
   ]
 

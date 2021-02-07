@@ -106,5 +106,5 @@ resource "aws_iam_role_policy_attachment" "ecs-task-execution-role" {
 
 resource "aws_cloudwatch_log_group" "revolgy-test" {
   name = "/ecs/revolgy-test"
-  retention_in_days = 10
+  retention_in_days = 7
 }
