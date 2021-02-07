@@ -43,19 +43,19 @@ resource "aws_ecs_task_definition" "revolgy-test" {
       "environment": [
         {
           "name": "USER", 
-          "value": "${jsonencode(var.rds-username)}"
+          "value": "${var.rds-username}"
         },
         {
           "name": "PASSWORD",
-          "value": "${jsonencode(var.rds-password)}"
+          "value": "${var.rds-password}"
         },
         {
           "name": "DB-HOST",
-          "value": "${jsonencode(module.db.this_db_instance_address)}"
+          "value": "${module.db.this_db_instance_address}"
         },
         {
           "name": "DB-NAME",
-          "value": "${jsonencode(var.rds-dbname)}"
+          "value": "${var.rds-dbname}"
         }
       ],
       "logConfiguration": {
@@ -67,8 +67,8 @@ resource "aws_ecs_task_definition" "revolgy-test" {
         }
       }
     }
-]
-EOF
+  ]
+  EOF
 
   execution_role_arn = aws_iam_role.revolgy-test-execution-role.arn
   cpu = 256
