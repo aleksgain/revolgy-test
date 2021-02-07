@@ -70,7 +70,7 @@ resource "aws_security_group" "http" {
     from_port = 80
     to_port = 31337
     protocol = "TCP"
-    cidr_blocks = ["167.86.114.0/24"]
+    cidr_blocks = ["10.0.0.0/16","167.86.114.0/24"]
   }
 }
 
