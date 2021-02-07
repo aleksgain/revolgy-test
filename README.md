@@ -13,6 +13,8 @@ This is a very simple app that records a visitor's IP address and stores it in a
   - Access control via [CloudFlare Access](https://www.cloudflare.com/teams/access) (revolgy emails only)
   - SSL termination via [Traefik](https://traefik.io) 
   - Monitoring via [CloudWatch](https://aws.amazon.com/cloudwatch) 
+  
+![Infrastructure diagram](infrastructure.png)
 
 # AWS Infrastructure
 
