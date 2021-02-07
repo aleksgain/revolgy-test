@@ -1,9 +1,8 @@
-<p align="center">
 # Revolgy Work Application Test
 
 ### [Try here! (Revolgy email address required to login)](https://revolgy.alexkri.net)
 
-
+<p align="center">
   <img width="460" height="300" src="https://i.redd.it/jqpuqv2uzag21.png">
 </p>
 
