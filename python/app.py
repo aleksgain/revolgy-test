@@ -41,7 +41,6 @@ def update(ip):
             lon = response['longitude']
             language = response['location']['languages'][0]['name']
             flag = response['location']['country_flag']
-            emoji = response['location']['country_flag_emoji']
             phone_code = response['location']['calling_code']
             result = "INSERT INTO ip (timestamp, city, region, country_name, cont_name, zip, lat, lon, language, flag, phone_code)" \
                     " VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
@@ -50,7 +49,8 @@ def update(ip):
         
 @app.route('/')
 def index():
-    ip = request.remote_addr
+    ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    print('Logging visitor from IP {}',format(ip))
     update(ip)
     text = ('Your IP is {}, saving it for tracking you!'.format(ip))
     return text
