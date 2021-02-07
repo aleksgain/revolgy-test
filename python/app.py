@@ -49,7 +49,7 @@ def update(ip):
         
 @app.route('/')
 def index():
-    ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
+    ip = request.environ['REMOTE_ADDR']
     update(ip)
     text = ('Your IP is {}, saving it for tracking you!'.format(ip))
     return text
