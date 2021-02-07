@@ -23,7 +23,6 @@ This is a very simple app that records a visitor's IP address and stores it in a
 
   - [AWS Fargate](https://aws.amazon.com/fargate) for running serverless container workload
   - [RDS](https://aws.amazon.com/rds) MySQL database for app data storage
-  - [S3](https://aws.amazon.com/s3) bucket for Terrafrom state storage
   - [Application Load balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
   - [CloudWatch](https://aws.amazon.com/cloudwatch) for monitoring dashboard and logs
 
