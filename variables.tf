@@ -15,8 +15,18 @@ variable "availability_zones" {
 }
 
 variable "desired_count" {
-  description = "Ideal number of instances in the ECS cluster."
+  description = "Desired number of instances in the ECS cluster."
   default = 1
+}
+
+variable "ecs-cpu-size" {
+  description = "Desired CPU size"
+  default = 256
+}
+
+variable "ecs-ram-size" {
+  description = "Desired memory size"
+  default = 512
 }
 
 variable "rds-dbname" {
@@ -30,4 +40,14 @@ variable "rds-username" {
 
 variable "rds-password" {
     description = "Password for RDS MySQL databse"
+}
+
+variable "db-storage-size" {
+    description = "Desired database size, in GB"
+    default = 5
+}
+
+variable "db-instance-type" {
+    description = "Desired instance type for RDS database"
+    default = "db.t3.micro"
 }

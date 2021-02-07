@@ -6,8 +6,8 @@ module "db" {
 
   engine = "mysql"
   engine_version = "5.7"
-  instance_class = "db.t3.micro"
-  allocated_storage = 5
+  instance_class = var.db-instance-type
+  allocated_storage = var.db-storage-size
 
   name = var.rds-dbname
   username = var.rds-username

@@ -71,8 +71,8 @@ resource "aws_ecs_task_definition" "revolgy-test" {
   EOF
 
   execution_role_arn = aws_iam_role.revolgy-test-execution-role.arn
-  cpu = 256
-  memory = 512
+  cpu = var.ecs-cpu-size
+  memory = var.ecs-ram-size
   requires_compatibilities = ["FARGATE"]
 
   network_mode = "awsvpc"
