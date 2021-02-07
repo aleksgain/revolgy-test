@@ -70,20 +70,7 @@ resource "aws_security_group" "http" {
     from_port = 80
     to_port = 31337
     protocol = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-resource "aws_security_group" "https" {
-  name = "https"
-  description = "HTTPS traffic"
-  vpc_id = aws_vpc.app-vpc.id
-
-  ingress {
-    from_port = 443
-    to_port = 443
-    protocol = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["167.86.114.209/24"]
   }
 }
 
@@ -109,6 +96,6 @@ resource "aws_security_group" "db" {
     from_port = 3306
     to_port = 3306
     protocol = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["10.0.0.0/16"]
   }
 }

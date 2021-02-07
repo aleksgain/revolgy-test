@@ -53,7 +53,8 @@ def update(ip):
         
 @app.route('/')
 def index():
-    ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    ip = request.headers.get('X-Real-IP', request.remote_addr)
+    print(ip)
     update(ip)
     SQLdb = connectdb()
     with SQLdb:
