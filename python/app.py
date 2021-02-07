@@ -4,6 +4,7 @@ import json, socket, requests, urllib.request, time, os, pymysql.cursors
 from flask import Flask
 from flask_api import status
 from flask import cli
+from flask import request
 
 app = Flask(__name__)
 cli.show_server_banner = lambda *_: None
