@@ -1,8 +1,11 @@
 # Revolgy Work Application Test
 
-# [Try here! (Revolgy email address required to login)](https://revolgy.alexkri.net)
+### [Try here! (Revolgy email address required to login)](https://revolgy.alexkri.net)
 
-![It's honest work](https://i.redd.it/jqpuqv2uzag21.png)
+<p align="center">
+  <img width="460" height="300" src="https://i.redd.it/jqpuqv2uzag21.png">
+</p>
+
 
 This is a very simple app that records a visitor's IP address and stores it in a database. The whole point of it's existence is to demonstrate an IaC solution: 
 
@@ -13,6 +16,8 @@ This is a very simple app that records a visitor's IP address and stores it in a
   - Access control via [CloudFlare Access](https://www.cloudflare.com/teams/access) (revolgy emails only)
   - SSL termination via [Traefik](https://traefik.io) 
   - Monitoring via [CloudWatch](https://aws.amazon.com/cloudwatch) 
+  
+![Infrastructure diagram](infrastructure.png)
 
 # AWS Infrastructure
 
