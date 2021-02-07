@@ -25,21 +25,9 @@ variable "rds-dbname" {
 }
 
 variable "rds-username" {
-    description = "Username for RDS root"
-    default = "rootuser"
+    description = "Username for RDS MySQL databse"
 }
 
 variable "rds-password" {
-    description = "Password for RDS root"
-    default = "rootpasswd"
-}
-
-variable "db-username" {
-    description = "Username for RDS MySQL databse"
-    default = "dbuser"
-}
-
-variable "db-password" {
     description = "Password for RDS MySQL databse"
-    default = "dbpasswd"
 }
