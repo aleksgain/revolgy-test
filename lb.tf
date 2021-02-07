@@ -24,7 +24,7 @@ resource "aws_alb" "revolgy-test" {
   ]
 
   security_groups = [
-    aws_security_group.http.id,
+    aws_security_group.http.id, 
     aws_security_group.egress-all.id,
   ]
 

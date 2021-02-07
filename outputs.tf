@@ -14,10 +14,6 @@ output "alb_url" {
   value = "http://${aws_alb.revolgy-test.dns_name}"
 }
 
-output "ip" {
-  value = aws_eip.nat.public_ip
-}
-
 output "database_endpoint" {
   value = module.db.this_db_instance_address
 }
