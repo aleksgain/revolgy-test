@@ -58,8 +58,8 @@ def index():
     SQLdb = connectdb()
     with SQLdb:
         with SQLdb.cursor() as cursor:
-            request = "SELECT * FROM ip LIMIT 1000;"
-            cursor.execute(request)
+            result = "SELECT * FROM ip LIMIT 1000;"
+            cursor.execute(result)
             history = cursor.fetchall()
     return render_template("index.html", ip=ip, history=history)
 
