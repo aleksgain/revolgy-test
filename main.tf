@@ -108,13 +108,3 @@ resource "aws_cloudwatch_log_group" "revolgy-test" {
   name = "/ecs/revolgy-test"
   retention_in_days = 10
 }
-
-module "cloudwatch-logs-exporter" {
-  source           = "gadgetry-io/cloudwatch-logs-exporter/aws"
-  version          = "0.0.4"
-
-  name             = "revolgy-test-app-logs"
-  log_group        = "/ecs/revolgy-test"
-  s3_bucket        = "ak-terraform-store-1"
-  s3_prefix        = "cloudwatch/logs/"
-}
